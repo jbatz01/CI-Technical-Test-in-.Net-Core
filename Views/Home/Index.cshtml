@@ -1,0 +1,74 @@
+﻿
+
+@{
+    ViewData["Title"] = "CI Technical Test";
+}
+
+@using CITechnicalTest.Models
+@model List<Country>
+
+
+<style>
+    .scrollable-h-item {
+        height: 300px;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .scrollable-h table {
+        position: relative;
+        width: 100%;
+    }
+
+    .grid-content-h {
+        background: #ffffff;
+        border: 1px solid #CCCCCC !important;
+    }
+
+    .w_200 {
+        width: 200px;
+    }
+
+    .w_150 {
+        width: 150px;
+    }
+ 
+</style>
+
+<div class="text-center">
+    <h3>Country List with Amount</h3>
+
+    <div class="scrollable-h-item grid-content-h">
+        <table style="border-collapse: collapse">
+            <thead>
+                <tr>
+                    <th class="w_200">Country</th>
+                    <th class="w_150">Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < Model.Count; i++)
+                {
+                    <tr>
+                        <td class="w_200" style="text-align:left;">
+                            @Html.DisplayFor(model => Model[i].name)
+                        </td>
+                        <td class="w_150" style="text-align:right;">
+                            @Html.DisplayFor(model => Model[i].amount)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    
+    <div style="margin-top:50px">
+        <table style="width:100%; table-layout:fixed;">
+            <tr>
+                <td style="max-width: 50%;">@await Component.InvokeAsync("Category")</td>
+                <td style="max-width: 50%;"><div id="idCountryList">Country List...</div></td>
+            </tr>
+        </table>
+    </div>
+</div>
+

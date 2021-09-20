@@ -1,0 +1,44 @@
+﻿
+
+@model List<CITechnicalTest.Models.CountryCategory>
+
+
+<div class="scrollable-h-item grid-content-h">
+    <table style="border-collapse: collapse">
+        <thead>
+            <tr>
+                <th class="w_150">Category List</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var country in Model)
+            {
+                <tr>
+                    <td class="w_150" style="text-align:left;">
+                        <a href="#" onclick="showCategory('@country.category');">@country.category</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+
+
+<script type="text/javascript">
+
+    function showCategory(category) {
+        var url = '@Url.Action("CountryList","Home")';
+        $.ajax({
+            type: 'GET',
+            url: url,
+            data: { category: category },
+            success: function (data) {
+                $('#idCountryList').html('');
+                $('#idCountryList').html(data);
+            }
+        });
+    }
+</script>
+

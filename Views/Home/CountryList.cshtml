@@ -1,0 +1,28 @@
+﻿
+ 
+
+@using CITechnicalTest.Models
+@model List<CountryCategory>
+
+<div class="text-center">
+    <div class="scrollable-h-item grid-content-h">
+        <table style="border-collapse: collapse">
+            <thead>
+                <tr>
+                    <th class="w_200">Country List</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < Model.Count; i++)
+                {
+                    <tr>
+                        <td class="w_200" style="text-align:left;">
+                            @Html.DisplayFor(model => Model[i].name)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
