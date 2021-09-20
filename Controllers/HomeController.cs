@@ -136,9 +136,10 @@ namespace CITechnicalTest.Controllers
                 var url = string.Format("http://data.fixer.io/api/{0}?access_key=5dc6fbe85ad5b160c65efd6e520c7b9a&base=EUR ", curDate.ToString("yyyy-MM-dd"));
 
                 var objAPI = new RequestObject(url);
-                //var json = objAPI.ExecAPIRequest(); 
+                var json = objAPI.ExecAPIRequest();
 
-                var json = JsonData.ReadJsonData(curDate.Day - 1);
+                //use this default json data when not connecting to API for testing purposes
+                //var json = JsonData.ReadJsonData(curDate.Day - 1);
 
                 var dtaObj = JObject.Parse(json);
 
